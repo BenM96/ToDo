@@ -60,8 +60,11 @@ public class AllItems {
 	
 	public void removeItem(int itemID) {
 		for(Item item :items) {
-			if(item.getItemID()==itemID) {
+			
+			if(item.getItemID()==itemID) {				
 				items.remove(item);
+				return;
+
 			}
 		}
 	}
