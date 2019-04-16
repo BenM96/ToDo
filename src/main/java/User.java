@@ -1,6 +1,3 @@
-package ToDo.ToDo;
-
-
 
 public class User {
 	private int userID;

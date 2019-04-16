@@ -1,7 +1,5 @@
-package ToDo.ToDo;
-
-
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class App {
 	public static void main(String[] args) throws SQLException {
