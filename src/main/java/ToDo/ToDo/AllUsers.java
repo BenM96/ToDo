@@ -23,13 +23,17 @@ public class AllUsers {
 		int id=0;
 		while(true) {
 			id++;
+			boolean unique= true;
 			for(User user : users) {
 				if (user.getUserID()==id) {
 					System.out.println(id);
-					continue;
-				}
+					unique=false;
+					break;
+				}				
 			}
-			return id;
+			if (unique) {
+				return id;
+			}
 		}
 	}
 
