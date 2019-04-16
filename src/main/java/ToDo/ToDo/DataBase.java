@@ -96,11 +96,11 @@ public class DataBase {
 		saveItem(1,1,"drink sum","first",false);
 		saveItem(2,1,"drink more","first",false);
 		saveItem(3,1,"heist","first",false);
-		saveItem(4,1,"help dwarfs","the hobbit",false);
-		saveItem(5,1,"kill dragon","the hobbit",false);
-		saveItem(6,1,"give ring to frodo","lotr",false);
-		saveItem(7,1,"celibrate bday","lotr",false);
-		saveItem(8,1,"get old","lotr",false);			
+		saveItem(4,2,"help dwarfs","the hobbit",false);
+		saveItem(5,2,"kill dragon","the hobbit",false);
+		saveItem(6,2,"give ring to frodo","lotr",false);
+		saveItem(7,2,"celibrate bday","lotr",false);
+		saveItem(8,2,"get old","lotr",false);			
 	}
 
 

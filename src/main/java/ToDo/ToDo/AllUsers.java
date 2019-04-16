@@ -26,7 +26,6 @@ public class AllUsers {
 			boolean unique= true;
 			for(User user : users) {
 				if (user.getUserID()==id) {
-					System.out.println(id);
 					unique=false;
 					break;
 				}				
@@ -37,14 +36,42 @@ public class AllUsers {
 		}
 	}
 
+	public String getUsername(int id) {
+		for (User user :users) {
+			if (user.getUserID()==id) {
+				return user.getUsername();
+			}
+		}
+		return "";
+	}
+	
+	public int getID(String username) {
+		for (User user :users) {
+			if (user.getUsername().equals(username)) {
+				return user.getUserID();
+			}
+		}
+		return 0;
+	}
+	
+	public String getPassword(int id) {
+		for (User user :users) {
+			if (user.getUserID()==id) {
+				return user.getPassword();
+			}
+		}
+		return "";
+	}
 	
 	
-	
-	
-	
-	
-	
-	
+	public void removeUser(int id) {
+		for (User user :users) {
+			if (user.getUserID()==id) {
+				users.remove(user);
+			}
+		}
+		
+	}	
 	
 	
 	
