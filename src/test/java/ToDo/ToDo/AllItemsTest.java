@@ -7,6 +7,9 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import ToDo.ToDo.model.AllItems;
+import ToDo.ToDo.model.DataBase;
+
 public class AllItemsTest {
 	
 	

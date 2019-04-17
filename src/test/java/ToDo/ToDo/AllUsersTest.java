@@ -5,6 +5,9 @@ import java.sql.SQLException;
 
 import org.junit.*;
 
+import ToDo.ToDo.model.AllUsers;
+import ToDo.ToDo.model.DataBase;
+
 
 public class AllUsersTest {
 	
