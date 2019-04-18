@@ -28,6 +28,7 @@ public class ItemController {
 	@RequestMapping(value = "items", method = RequestMethod.POST)
     public Item create(@RequestBody Item item){
 		items.addItem(item.getUserID(), item.getDesc(), item.getListName(), false);;
+		items.commit();
         return items.getItem(items.getItemID(item.getUserID(), item.getListName(), item.getDesc()));
     }
 
@@ -36,6 +37,7 @@ public class ItemController {
 	@RequestMapping(value = "items", method = RequestMethod.PUT)
     public Item update(@RequestBody Item item){
 		items.editItem(item);
+		items.commit();
 		return item;
         
     }
@@ -44,8 +46,8 @@ public class ItemController {
     public Item delete(@PathVariable Integer id){		
 		Item item=items.getItem(id);
         items.removeItem(id);
-        return item;
-       
+        items.commit();
+        return item;       
     }
 
 

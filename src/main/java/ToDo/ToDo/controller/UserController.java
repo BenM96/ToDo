@@ -28,6 +28,7 @@ public class UserController {
 	@RequestMapping(value = "users", method = RequestMethod.POST)
     public User create(@RequestBody User user){
 		users.newUser(user.getUsername(),user.getPassword());
+		users.commit();
         return users.getUser(users.getID(user.getUsername()));
     }
 
@@ -35,6 +36,7 @@ public class UserController {
 	@RequestMapping(value = "users", method = RequestMethod.PUT)
     public User update(@RequestBody User user){
 		users.editUser(user);
+		users.commit();
 		return user;
         
     }
@@ -43,6 +45,7 @@ public class UserController {
     public User delete(@PathVariable Integer id){		
 		User user=users.getUser(id);
         users.removeUser(id);
+        users.commit();
         return user;
        
     }

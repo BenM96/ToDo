@@ -34,7 +34,6 @@ public class AllUsers {
 		return null;
 	}
 	
-	
 	public int generateID() {
 		int id=0;
 		while(true) {
@@ -103,7 +102,17 @@ public class AllUsers {
 		this.users = users;
 	}
 
-
+	public void commit() {
+		DataBase d= new DataBase();
+		for (User user : users) {
+			try {
+				d.saveUser(user);
+			}catch (Exception e) {
+				continue;
+			}
+		}
+	}
+	
 
 
 

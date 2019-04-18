@@ -18,7 +18,6 @@ public class AllItems {
 	}
 	
 	
-	
 	public void editItem(Item item) {
 		int id = item.getItemID();
 		int index= items.indexOf(getItem(id));
@@ -77,6 +76,14 @@ public class AllItems {
 		items.add(newItem);
 	}
 	
+	public void addItem(int userID,String desc,String listName,int completed) {
+		boolean completed1= false;
+		if(completed==1) {
+			completed1=true;
+		}
+		addItem(userID,desc,listName,completed1);
+	}
+	
 	
 	public void removeItem(int itemID) {
 		for(Item item :items) {
@@ -97,5 +104,15 @@ public class AllItems {
 		}
 		return 0;
 	}
-	
+
+	public void commit() {
+		for(Item item:this.items) {
+			DataBase d= new DataBase();
+			try {
+				d.saveItem(item);				
+			} catch (Exception e){
+				continue;
+			}
+		}
+	}
 }
