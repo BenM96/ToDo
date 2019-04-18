@@ -9,6 +9,8 @@ public class Item {
 	private String listName;
 	private boolean completed;
 	
+	public Item() {}
+	
 	public Item(int listItemID,int userID,String desc,String listName,int completed) {
 		this.itemID=listItemID;
 		this.userID=userID;

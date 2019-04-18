@@ -19,7 +19,7 @@ public class ItemController {
 	
 	AllItems items= new AllItems();	
 	
-	@RequestMapping(value="items", method=RequestMethod.GET)
+	@RequestMapping(value="items", method=RequestMethod.GET)	
 	public List<Item> list() throws SQLException{
 		return items.getItems();
 	}
@@ -28,7 +28,7 @@ public class ItemController {
 	@RequestMapping(value = "items", method = RequestMethod.POST)
     public Item create(@RequestBody Item item){
 		items.addItem(item.getUserID(), item.getDesc(), item.getListName(), false);;
-        return item;
+        return items.getItem(items.getItemID(item.getUserID(), item.getListName(), item.getDesc()));
     }
 
 	

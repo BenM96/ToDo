@@ -2,7 +2,6 @@ package ToDo.ToDo;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 
 public class AllItems {
 	
@@ -17,7 +16,7 @@ public class AllItems {
 			e.printStackTrace();
 		}
 	}
-		
+	
 	
 	
 	public void editItem(Item item) {
@@ -88,6 +87,15 @@ public class AllItems {
 
 			}
 		}
+	}
+	
+	public int getItemID(int userID,String listName, String desc) {
+		for(Item item :items) {
+			if(item.getUserID()==userID & item.getListName().equals(listName) & item.getDesc().equals(desc)) {
+				return item.getItemID();
+			}
+		}
+		return 0;
 	}
 	
 }
