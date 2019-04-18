@@ -1,4 +1,4 @@
-package ToDo.ToDo.model;
+package ToDo.ToDo;
 
 
 

@@ -1,16 +1,32 @@
-package ToDo.ToDo.model;
+package ToDo.ToDo;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class AllItems {
 	
 	private ArrayList<Item> items= new ArrayList<Item>();
 	
-	public AllItems() throws SQLException {
+	
+	public AllItems()  {
 		DataBase d= new DataBase();
-		this.items=d.loadItems();
+		try {
+			this.items=d.loadItems();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
+		
+	
+	
+	public void editItem(Item item) {
+		int id = item.getItemID();
+		int index= items.indexOf(getItem(id));
+		this.items.set(index, item);
+		
+	}
+	
 	
 	public int generateID() {
 		int id=0;
@@ -49,6 +65,11 @@ public class AllItems {
 			}
 		}
 		return null;
+	}
+	
+	public ArrayList<Item> getItems() {
+		return this.items;
+		
 	}
 	
 	public void addItem(int userID,String desc,String listName,boolean completed) {

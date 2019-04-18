@@ -5,8 +5,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import ToDo.ToDo.model.AllUsers;
-import ToDo.ToDo.model.User;
+import ToDo.ToDo.AllUsers;
+import ToDo.ToDo.User;
+
 
 
 public class UsersStub {

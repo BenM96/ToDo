@@ -1,16 +1,22 @@
-package ToDo.ToDo.model;
+package ToDo.ToDo;
 
 
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+
+
 public class AllUsers {
 	private ArrayList<User> users;
 	
 	
-	public AllUsers() throws SQLException {
+	public AllUsers() {
 		DataBase d= new DataBase();
-		this.users=d.loadUsers();
+		try {
+			this.users=d.loadUsers();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public void newUser(String username, String password) {
@@ -18,6 +24,16 @@ public class AllUsers {
 		User newUser= new User(userID,username,password);
 		users.add(newUser);
 	}
+	
+	public User getUser(int id) {
+		for (User user: users) {
+			if (user.getUserID()==id) {
+				return user;
+			}
+		}
+		return null;
+	}
+	
 	
 	public int generateID() {
 		int id=0;
@@ -73,6 +89,10 @@ public class AllUsers {
 		
 	}	
 	
+	public void editUser(User user) {
+		int index = this.users.indexOf(user);
+		this.users.set(index, user);		
+	}
 	
 	
 	public ArrayList<User> getUsers() {

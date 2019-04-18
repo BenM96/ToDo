@@ -1,4 +1,4 @@
-package ToDo.ToDo.model;
+package ToDo.ToDo;
 
 
 
@@ -47,6 +47,7 @@ public class DataBase {
 		}
 		
 		stmt.executeUpdate("insert into list_items(item_id, user_id,list_item,list_name,completed) values("+itemID+",'"+userID+"','"+desc+"','"+listName+"',"+completed10+");");
+		stmt.close();
 		
 	}
 		
