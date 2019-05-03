@@ -31,7 +31,9 @@ public class Item {
 		this.completed=completed;
 	}
 
-	
+	public void complete() {
+		this.completed=!this.completed;
+	}
 	
 	
 	

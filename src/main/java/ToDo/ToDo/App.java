@@ -11,10 +11,13 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class App {
 	public static void main(String[] args) throws SQLException {
 		DataBase d = new DataBase();
-//		d.build();
-//		d.dummyData();
+		d.build();
+		d.dummyData();
 		AllUsers users=new AllUsers();
-		AllItems items=new AllItems();	
+		AllItems items=new AllItems();
+		AllFriends allFriends= new AllFriends();
+		
+		
 		SpringApplication.run(App.class, args);
 		
 //		items.addItem(1, "new", "first", 1);

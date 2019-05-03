@@ -22,9 +22,17 @@ public class DataBase {
 		stmt=conn.createStatement();
 		stmt.executeUpdate("drop table if exists list_items;");
 		stmt.executeUpdate("drop table if exists users;");
+		stmt.executeUpdate("drop table if exists friends;");
 		stmt.executeUpdate("create table users(user_id int, username varchar(20) not null unique, password varchar(20) not null,primary key(user_id));");
 		stmt.executeUpdate("create table list_items(item_id int, user_id int, list_item varchar(100),list_name varchar(50),completed tinyint, primary key(item_id), foreign key(user_id) references users(user_id));");
+		stmt.executeUpdate("create table friends(userID1 int, userID2 int, friends tinyint);");
 		stmt.close();
+	}
+	
+	public void deleteListItems() throws SQLException {
+		conn=DriverManager.getConnection(DB_URL,USER,PASS);
+		stmt=conn.createStatement();
+		stmt.executeUpdate("delete from list_items");
 	}
 
 	public void saveUser(int userID,String username,String password) throws SQLException{
@@ -50,6 +58,13 @@ public class DataBase {
 		stmt.close();
 		
 	}
+	
+	public void saveFriends(int userID1, int userID2, int friends) throws SQLException {
+		conn=DriverManager.getConnection(DB_URL,USER,PASS);
+		stmt=conn.createStatement();
+		stmt.executeUpdate("insert into friends(userID1, userID2, friends) values ("+userID1+","+userID2+","+friends+");");
+		stmt.close();
+	}
 		
 	public void saveItem(Item item) throws SQLException {
 		saveItem(item.getItemID(),item.getUserID(),item.getDesc(),item.getListName(),item.isCompleted());
@@ -69,6 +84,21 @@ public class DataBase {
 		}		
 		stmt.close();
 		return users;
+	}
+	
+	public ArrayList<Friends> loadFriends() throws SQLException{
+		conn=DriverManager.getConnection(DB_URL,USER,PASS);
+		stmt=conn.createStatement();
+		ResultSet rs=stmt.executeQuery("select * from friends");
+		ArrayList<Friends> allFriends= new ArrayList<Friends>();
+		while(rs.next()) {
+			int userID1 =rs.getInt("userID1");
+			int userID2 = rs.getInt("userID2");
+			int friends= rs.getInt("friends");
+			Friends newFriends=new Friends(userID1,userID2,friends);
+			allFriends.add(newFriends);
+		}
+		return allFriends;
 	}
 	
 	public ArrayList<Item> loadItems() throws SQLException{
@@ -94,6 +124,8 @@ public class DataBase {
 	public void dummyData() throws SQLException {
 		saveUser(1,"archer", "guest");
 		saveUser(2,"bilbo","time");
+		saveUser(3,"frodo","sam");
+		saveUser(4,"sam","frodo");
 		saveItem(1,1,"drink sum","first",false);
 		saveItem(2,1,"drink more","first",false);
 		saveItem(3,1,"heist","first",false);
@@ -101,7 +133,10 @@ public class DataBase {
 		saveItem(5,2,"kill dragon","the hobbit",false);
 		saveItem(6,2,"give ring to frodo","lotr",false);
 		saveItem(7,2,"celibrate bday","lotr",false);
-		saveItem(8,2,"get old","lotr",false);			
+		saveItem(8,2,"get old","lotr",false);
+		saveItem(9,3,"bilbo nagging","bilbo",false);
+		saveFriends(2,3,1);
+		saveFriends(2,4,1);
 	}
 
 

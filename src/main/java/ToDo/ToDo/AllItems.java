@@ -106,8 +106,13 @@ public class AllItems {
 	}
 
 	public void commit() {
+		DataBase d= new DataBase();
+//		try {
+//			d.deleteListItems();
+//		} catch (Exception e) {
+//			
+//		}
 		for(Item item:this.items) {
-			DataBase d= new DataBase();
 			try {
 				d.saveItem(item);				
 			} catch (Exception e){
@@ -115,4 +120,18 @@ public class AllItems {
 			}
 		}
 	}
+
+	public ArrayList<String> getListNames(int userID) {
+		ArrayList<String> listNames= new ArrayList();
+		for(Item item :items) {
+			String listName=item.getListName();
+			if(item.getUserID()==userID) {
+				if(!listNames.contains(listName)) {
+					listNames.add(listName);
+				}
+			}
+		}
+		return listNames;
+	}
+	
 }
